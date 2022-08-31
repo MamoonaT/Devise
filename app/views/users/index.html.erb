@@ -1,7 +1,7 @@
+<h1> Welcome</h1>
 
 <% if admin_user_signed_in? %>
   <%= link_to "Sign_Out", destroy_admin_user_session_path, method: :delete %>
 <% else %>
-	<%= link_to "Sign_In", new_admin_user_session_path %>
-
+  <%= link_to "Sign_In", new_admin_user_session_path %>
 <% end %>
