@@ -1,6 +1,6 @@
 class PostPolicy < class ApplicationPolicy
 
-	def index
+	def edit
 	end
 
 end

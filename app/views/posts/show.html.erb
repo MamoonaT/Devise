@@ -1,0 +1,19 @@
+<%= link_to "Posts list", posts_path %>
+
+<div> 
+    <p> Title </p>
+    <%= @post.title %>
+    <br>
+    <p>Body: </p>
+    <%= @post.body %>
+    <br>
+
+</div>
+<br>
+
+<%= link_to "New Post", new_post_path %>
+<br>
+<%= link_to "Edit Post", edit_post_path %>
+
+
+
