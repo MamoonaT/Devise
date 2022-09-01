@@ -25,7 +25,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def destroy?
-    false
+		user.present?
   end
 
 
