@@ -1,7 +1,6 @@
 class PostPolicy < class ApplicationPolicy
 
-	def index?
-		authorize @posts
+	def index
 	end
 
 end

@@ -2,8 +2,8 @@ class PostsController < ApplicationController
 
 
 	def index
-    # @posts = Posts.all.order("created_at DESC")
-    authorize @posts
+    @posts = Post.all.order("created_at DESC")
+
 
   end
 
