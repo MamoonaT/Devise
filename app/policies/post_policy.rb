@@ -1,4 +1,16 @@
 class PostPolicy < ApplicationPolicy
+  class Scope < PostPolicy
+    attr_reader :user, :scope
+
+    def initialize(user, scope)
+      @user = user
+      @scope = scope
+    end
+
+    def resolve
+      @scope.where(post_id: @user.post_id)
+    end
+  end
 
 	def index?
     false
@@ -13,7 +25,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def new?
-    create?
+		user.present?
   end
 
   def update?

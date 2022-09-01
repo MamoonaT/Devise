@@ -1,14 +1,13 @@
 class PostsController < ApplicationController
 	before_action :find_post, only: [:show, :edit, :update, :destroy]
 
-
-
 	def index
     @posts = Post.all.order("created_at DESC")
   end
 
   def new
-      @post = Post.new
+    @post = Post.new
+    authorize @post
   end
 
   def create
@@ -22,9 +21,7 @@ class PostsController < ApplicationController
 
   def show; end
 
-  def edit
-
-  end
+  def edit; end
   
   def update
     authorize @post

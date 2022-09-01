@@ -6,5 +6,7 @@
 <h1> Posts List</h1>
 <% @posts.each do |post| %>
 <h2><%= post.id %></h2>
-<%= link_to "See Details", post %>
+<%= link_to "See Details", post %><br>
 <% end %>
+<br>
+<%= link_to "Back", new_admin_user_session_path %>
