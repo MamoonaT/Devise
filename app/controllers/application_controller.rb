@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   #before_action :authenticate_admin_user!
 	include Pundit::Authorization
+  before_action :current_user
 	rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
  
 
@@ -11,5 +12,8 @@ class ApplicationController < ActionController::Base
     redirect_to(request.referrer || root_path)
   end
 
+  def current_user
+    current_admin_user
+  end
 
 end

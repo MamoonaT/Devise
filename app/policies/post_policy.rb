@@ -1,4 +1,4 @@
-class PostPolicy < class ApplicationPolicy
+class PostPolicy < ApplicationPolicy
 
 	def index?
     false
@@ -17,8 +17,7 @@ class PostPolicy < class ApplicationPolicy
   end
 
   def update?
-		post.admin? or not record.published?
-
+		user.present?
   end
 
   def edit?
