@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
 	before_action :find_post, only: [:show, :edit, :update, :destroy]
+  # before_action :find_user, only: [:edit, :update, :destroy]
 
 	def index
     @posts = Post.all.order("created_at DESC")
@@ -7,26 +8,26 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    authorize @post
   end
 
   def create
     @post = Post.new(post_params)
+    @post.admin_user_id = current_admin_user.id
+
     if @post.save
       redirect_to @post
     else
-      render 'edit'
+      render 'new'
     end
   end
 
   def show; end
 
   def edit
-    authorize @post
+
   end
   
   def update
-    authorize @post
     if @post.update(post_params)
       redirect_to @post
     else
@@ -35,7 +36,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    authorize @post
     @post.destroy
     redirect_to posts_path
   end
@@ -47,9 +47,12 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])  
   end
 
+  # def find_user
+  #   @admin_user = AdminUser.find(params[:admin_user_id])
+  # end
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :admin_user_id)
   end
 
 end

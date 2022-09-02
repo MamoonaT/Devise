@@ -2,6 +2,12 @@ class PostPolicy < ApplicationPolicy
   class Scope < PostPolicy
     attr_reader :user, :scope
 
+
+    def pundit_user
+      current_admin_users
+    end 
+
+    
     def initialize(user, scope)
       @user = user
       @scope = scope
