@@ -1,0 +1,12 @@
+<h2>jhlj<h2>
+<%= form_for (@post, => wizard_path, :method => put) do |f| %>
+
+    <%= f.label :zip => 'zip code' %><br>
+    <%= f.text_field :title %><br>
+    <br>
+    <%= f.label :body %><br>
+    <%= f.text_field :body %><br>
+    <br>
+
+    <%= f.submit, next_wizard_path %>
+<% end %> 
